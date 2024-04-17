@@ -1,0 +1,80 @@
+:root {
+    --indicator-color-on: hsl(227, 94%, 50%);
+    --indicator-color-off: hsl(0, 94%, 50%); /* Warna merah untuk off */
+    --body-color: hsl(0, 0%, 100%);
+    --body-color-off: hsl(0, 0%, 5%);
+    --container-color: hsl(233, 12%, 20%);
+    --container-color-light: hsl(233, 12%, 26%);
+}
+
+body {
+    background: var(--body-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle {
+    height: 160px;
+    background-color: var(--container-color);
+    padding: 0 3rem;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+input {
+    display: none;
+}
+
+.track {
+    width: 176px;
+    height: 56px;
+    background-color: var(--container-color-light);
+    border-radius: 6rem;
+    position: relative;
+}
+
+.circle {
+    width: 72px;
+    height: 72px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: transform 0.4s;
+}
+
+.light {
+    width: 24px;
+    height: 24px;
+    background-color: var(--container-color-light);
+    border-radius: 50%;
+    margin-left: 3rem;
+    margin-right: 1rem;
+    transition: 0.4s;
+}
+
+.status {
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+    margin-left: 1rem; /* Menambahkan margin kiri */
+}
+
+/* CSS untuk indikator warna on */
+input:checked ~ .track .circle {
+    transform: translate(104px, -50%);
+}
+
+input:checked ~ .light {
+    background-color: var(--indicator-color-on);
+}
+
+/* CSS untuk indikator warna off */
+input:not(:checked) ~ .light {
+    background-color: var(--indicator-color-off);
+}
